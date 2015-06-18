@@ -229,12 +229,14 @@
 			<artifactId>ami2</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
-<!-- 		
+		<!--  shouldn't be necessary -->
 		<dependency>
 			<groupId>org.xml-cml</groupId>
 			<artifactId>diagramanalyzer</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
+		
+<!-- 		
 		-->
   		<dependency>
 			<groupId>org.xml-cml</groupId>
