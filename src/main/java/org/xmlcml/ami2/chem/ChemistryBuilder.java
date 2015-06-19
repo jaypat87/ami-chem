@@ -1,6 +1,7 @@
 package org.xmlcml.ami2.chem;
 
 import java.awt.Graphics2D;
+
 import java.awt.font.GlyphVector;
 import java.awt.image.BufferedImage;
 import java.io.File;

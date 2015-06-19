@@ -1,6 +1,7 @@
 package org.xmlcml.ami2.plugins.graphicschem;
 
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -33,6 +34,9 @@ public class GraphChemArgProcessor extends AMIArgProcessor {
 	static {
 		LOG.setLevel(Level.DEBUG);
 	}
+
+	// shouldn't be required // fails to inherit on Jenkins
+	private static String WHITESPACE = "\\s+";
 	
 	public GraphChemArgProcessor() {
 		super();
