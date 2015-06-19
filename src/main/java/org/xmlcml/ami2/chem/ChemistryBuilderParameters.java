@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.xmlcml.euclid.Real2;
 import org.xmlcml.euclid.RealArray;
 import org.xmlcml.euclid.Univariate;
@@ -96,6 +97,8 @@ public class ChemistryBuilderParameters {
 		}
 
 	}
+	
+	private final static Logger LOG = Logger.getLogger(ChemistryBuilderParameters.class);
 	
 	private static final double DEFAULT_STANDARD_BOND_LENGTH = 12.69;//13.1;
 	private static final double DEFAULT_BOND_LENGTH_QUANTILE_AFTER_SPLITTING = 0.5;//0.74 then 0.43
@@ -394,15 +397,7 @@ public class ChemistryBuilderParameters {
 			return standardBondLength / DEFAULT_STANDARD_BOND_LENGTH;
 		}*/
 		if(lines.size() == 0) {
-			try {
-//				FileWriter w = new FileWriter("C:/workspace/fails.txt", true);
-				FileWriter w = new FileWriter("target/fails.txt", true);
-				w.write(standardBondLength + "\r\n");
-				w.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			System.out.println(standardBondLength + " (normally " + DEFAULT_STANDARD_BOND_LENGTH + ")");
+			LOG.debug("Standard bond length: " + standardBondLength + " (normally " + DEFAULT_STANDARD_BOND_LENGTH + ")");
 			return 1;
 		}
 
@@ -612,15 +607,7 @@ public class ChemistryBuilderParameters {
 		
 		//b.maximumCutObjectGap *= standardBondLength / DEFAULT_STANDARD_BOND_LENGTH;
 		//b.minimumCutObjectGap *= standardBondLength / DEFAULT_STANDARD_BOND_LENGTH;
-		System.out.println(standardBondLength + " (normally " + DEFAULT_STANDARD_BOND_LENGTH + ")");
-		try {
-//			FileWriter w = new FileWriter("C:/workspace/fails.txt", true);
-			FileWriter w = new FileWriter("target/fails.txt", true);
-			w.write(standardBondLength + "\r\n");
-			w.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		LOG.debug("Standard bond length: " + standardBondLength + " (normally " + DEFAULT_STANDARD_BOND_LENGTH + ")");
 		return standardBondLength / DEFAULT_STANDARD_BOND_LENGTH;
 	}
 
