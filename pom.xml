@@ -82,26 +82,6 @@
 							<mainClass>org.xmlcml.ami2.plugins.gene.GenePlugin</mainClass>
 							<id>ami2-gene</id>
 						</program>
- 						<program>
-							<mainClass>org.xmlcml.ami2.plugins.identifier.IdentifierPlugin</mainClass>
-							<id>ami2-identifier</id>
-						</program>
- 						<program>
-							<mainClass>org.xmlcml.ami2.plugins.regex.RegexPlugin</mainClass>
-							<id>ami2-regex</id>
-						</program>
-						<program>
-							<mainClass>org.xmlcml.ami2.plugins.sequence.SequencePlugin</mainClass>
-							<id>ami2-sequence</id>
-						</program>
-						<program>
-							<mainClass>org.xmlcml.ami2.plugins.species.SpeciesPlugin</mainClass>
-							<id>ami2-species</id>
-						</program>
-						<program>
-							<mainClass>org.xmlcml.ami2.plugins.word.WordPlugin</mainClass>
-							<id>ami2-word</id>
-						</program>
 					</programs>
 
 					<!-- Prevent long directories -->
