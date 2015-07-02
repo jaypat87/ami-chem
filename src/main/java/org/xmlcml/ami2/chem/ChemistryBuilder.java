@@ -1017,7 +1017,7 @@ public class ChemistryBuilder extends SimpleBuilder {
 			int previousPreviousLabel = 0;
 			int previousLabel = 0;
 			for (Integer i : labelNumbersToBeSorted) {
-				if (i - previousLabel > labelNumbersToBeSorted.get(labelNumbersToBeSorted.size() - 1) * parameters.getMaximumLabelSequenceGap() || (i == previousPreviousLabel && i != 2 && i != 3 && i != 4)) {
+				if (i - previousLabel > labelNumbersToBeSorted.get(labelNumbersToBeSorted.size() - 1) * parameters.getMaximumLabelSequenceGap()) {
 					for (JoinableText t : list.getValue()) {
 						remainingJoinPoints.addAll(t.getJoinPoints());
 					}
