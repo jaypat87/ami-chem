@@ -28,6 +28,7 @@ import org.xmlcml.graphics.svg.SVGUtil;
 public class GraphChemArgProcessor extends AMIArgProcessor {
 	
 	public static final Logger LOG = Logger.getLogger(GraphChemArgProcessor.class);
+//
 	private List<String> params;
 	private SVGElement inputSvg;
 	private CMLMolecule molecule;
@@ -49,6 +50,7 @@ public class GraphChemArgProcessor extends AMIArgProcessor {
 
 	public GraphChemArgProcessor(String argString) {
 		this(argString.split(WHITESPACE));
+// dummy
 	}
 
 	// =============== METHODS ==============

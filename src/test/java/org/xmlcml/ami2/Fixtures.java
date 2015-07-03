@@ -1,6 +1,7 @@
 package org.xmlcml.ami2;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +71,7 @@ public class Fixtures {
 		cmDir.copyTo(temp, true);
 		
 		Assert.assertFalse("exists? "+RESULTS_XML, cmDir.hasResultsDir());
-		DefaultArgProcessor argProcessor = (DefaultArgProcessor) plugin.getArgProcessor();
+		DefaultArgProcessor argProcessor = (org.xmlcml.cmine.args.DefaultArgProcessor) plugin.getArgProcessor();
 		argProcessor.parseArgs(args);
 		argProcessor.runAndOutput();
 		List<File> files = new ArrayList<File>(FileUtils.listFiles(temp, null, true));
