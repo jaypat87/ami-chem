@@ -3,21 +3,15 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.xml-cml</groupId>
-	<artifactId>ami-chem</artifactId>
+	<artifactId>ami-chemtext</artifactId>
 	<version>0.1-SNAPSHOT</version>
-	<description>Plugin architecture for converting Normalized science to chemistry </description>
-    <name>AMI-chem</name>
-<!--
-	<parent>
-		<groupId>uk.ac.cam.ch.wwmm</groupId>
-		<artifactId>wwmm-parent</artifactId>
-		<version>5-SNAPSHOT</version>
-	</parent>
--->
-<!-- this should not be necessary -->
-<properties>
-	<guava.version>18.0</guava.version>
-</properties>
+	<description>Plugin architecture for converting  text to chemistry </description>
+	<name>AMI-chemtext</name>
+	<!-- <parent> <groupId>uk.ac.cam.ch.wwmm</groupId> <artifactId>wwmm-parent</artifactId> 
+		<version>5-SNAPSHOT</version> </parent> -->
+	<!-- this should not be necessary -->
+	<properties>
+	</properties>
 
 	<!--Remove <repositories> for releases to Maven central -->
 	<repositories>
@@ -78,7 +72,7 @@
 				<configuration>
 
 					<programs>
- 						<program>
+						<program>
 							<mainClass>org.xmlcml.ami2.plugins.gene.GenePlugin</mainClass>
 							<id>ami2-gene</id>
 						</program>
@@ -126,54 +120,9 @@
 								<prefix>/usr/share/ami-repo</prefix>
 							</mapper>
 						</data>
-<!--  
-						<data>
-							<src>${basedir}/src/test/resources/org/xmlcml/ami/html/multiple.312.html</src>
-							<type>file</type>
-							<mapper>
-								<type>perm</type>
-								<filemode>555</filemode>
-								<prefix>/usr/share/ami-repo/exampleData/html</prefix>
-							</mapper>
-						</data>
--->
- 						<data>
-							<type>link</type>
-							<symlink>true</symlink>
-							<linkName>/usr/bin/ami2-gene</linkName>
-							<linkTarget>/usr/share/ami-repo/bin/ami2-gene</linkTarget>
-						</data>
- 						<data>
-							<type>link</type>
-							<symlink>true</symlink>
-							<linkName>/usr/bin/ami2-identifier</linkName>
-							<linkTarget>/usr/share/ami-repo/bin/ami2-identifier</linkTarget>
-						</data>
- 						<data>
-							<type>link</type>
-							<symlink>true</symlink>
-							<linkName>/usr/bin/ami2-regex</linkName>
-							<linkTarget>/usr/share/ami-repo/bin/ami2-regex</linkTarget>
-						</data>
-						<data>
-							<type>link</type>
-							<symlink>true</symlink>
-							<linkName>/usr/bin/ami2-sequence</linkName>
-							<linkTarget>/usr/share/ami-repo/bin/ami2-sequence</linkTarget>
-						</data>
-						<data>
-							<type>link</type>
-							<symlink>true</symlink>
-							<linkName>/usr/bin/ami2-species</linkName>
-							<linkTarget>/usr/share/ami-repo/bin/ami2-species</linkTarget>
-						</data>
-						<data>
-							<type>link</type>
-							<symlink>true</symlink>
-							<linkName>/usr/bin/ami2-word</linkName>
-							<linkTarget>/usr/share/ami-repo/bin/ami2-word</linkTarget>
-						</data>
-
+						<!-- <data> <src>${basedir}/src/test/resources/org/xmlcml/ami/html/multiple.312.html</src> 
+							<type>file</type> <mapper> <type>perm</type> <filemode>555</filemode> <prefix>/usr/share/ami-repo/exampleData/html</prefix> 
+							</mapper> </data> -->
 					</dataSet>
 				</configuration>
 			</plugin>
@@ -203,38 +152,28 @@
 	</build>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.xml-cml</groupId>
+			<artifactId>euclid</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.xml-cml</groupId>
+			<artifactId>cmlxom</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>uk.ac.cam.ch.wwmm</groupId>
+			<artifactId>chemicalTagger</artifactId>
+ 			<version>1.4.0</version> 
+		</dependency>
 
 		<dependency>
 			<groupId>org.xml-cml</groupId>
-			<artifactId>ami2</artifactId>
+			<artifactId>ami-chem</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
-		<!--  shouldn't be necessary -->
-		<dependency>
-			<groupId>org.xml-cml</groupId>
-			<artifactId>diagramanalyzer</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
-		
-<!-- 		
-		-->
-  		<dependency>
-			<groupId>org.xml-cml</groupId>
-			<artifactId>jumbo</artifactId>
-			<version>6.1-SNAPSHOT</version>
-		</dependency>
-		
-		<!--  this should not be necessary 
-		There seems to be a rougue version of guava somewhere
-		(http://stackoverflow.com/questions/28978277/guava-multisets-copyhighestcountfirst-method-suddenly-not-working)
-		 -->
-		 <!-- 
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
- 			<version>${guava.version}</version>
-		</dependency>
--->
 
 		<!-- tests -->
 		<dependency>
@@ -243,49 +182,7 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.openscience.cdk</groupId>
-			<artifactId>cdk-io</artifactId>
-			<version>1.5.7</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openscience.cdk</groupId>
-			<artifactId>cdk-silent</artifactId>
-			<version>1.5.7</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openscience.cdk</groupId>
-			<artifactId>cdk-render</artifactId>
-			<version>1.5.7</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openscience.cdk</groupId>
-			<artifactId>cdk-renderawt</artifactId>
-			<version>1.5.7</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openscience.cdk</groupId>
-			<artifactId>cdk-sdg</artifactId>
-			<version>1.5.7</version>
-		</dependency>
-		<dependency>
-			<groupId>uk.ac.cam.ch.ucc</groupId>
-			<artifactId>svggraphics2d</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>blogspot.software-and-algorithms</groupId>
-			<artifactId>stern-library</artifactId>
-			<version>0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.vafer</groupId>
-			<artifactId>jdeb</artifactId>
-			<version>1.3</version>
-			<!-- Prevents jar bloat in final package -->
-			<scope>provided</scope>
-		</dependency>
+
 	</dependencies>
 
 </project>
