@@ -146,7 +146,6 @@ public class ChemistryBuilderParameters {
 	private static final int OCR_MINIMUM_IMAGE_WIDTH = 14;
 	private static final double OCR_DEFAULT_MAXIMUM_IMAGE_ELEMENT_WIDTH = 12;
 	private static final double DEFAULT_RELATIVE_FONT_SIZE_TOLERANCE = 0.9;
-	private static final double DEFAULT_TEXT_X_OVERLAP_EPSILON = 0.001;
 	private static final int DEFAULT_MAXIMUM_OCR_ERROR = 135;//15;
 	
 	private static final double DOUBLE_BOND_DETECTION_PARALLEL_THRESHOLD_IN_RADIANS = 0.3;
@@ -162,8 +161,6 @@ public class ChemistryBuilderParameters {
 	private static final double DEFAULT_TOLERANCE_FOR_PARALLEL_JOINABLES = 0.1;
 	
 	private static final double DEFAULT_Y_AXIS_SHIFT_FOR_TEXT_CENTRE = 0.125;
-
-	private static final double DEFAULT_MAXIMUM_SINGLE_BOND_LENGTH = 4;//Was 45 before being made relative
 
 	private static final double DEFAULT_SMALL_TEXT_RADIUS_EXPANSION = 0.85;//0.9;//.05;
 	private static final double DEFAULT_LARGE_TEXT_RADIUS_EXPANSION = 1.05;
@@ -193,7 +190,6 @@ public class ChemistryBuilderParameters {
 	private int mimimumImageWidthForOCR = OCR_MINIMUM_IMAGE_WIDTH;
 	private double maximumImageElementWidthForOCR = OCR_DEFAULT_MAXIMUM_IMAGE_ELEMENT_WIDTH;
 	private double allowedFontSizeVariation = DEFAULT_RELATIVE_FONT_SIZE_TOLERANCE;
-	private double textOverlapEpsilon = DEFAULT_TEXT_X_OVERLAP_EPSILON;
 	private int maximumOCRError = DEFAULT_MAXIMUM_OCR_ERROR;
 	
 	private double parallelThresholdInRadians = DOUBLE_BOND_DETECTION_PARALLEL_THRESHOLD_IN_RADIANS;
@@ -215,8 +211,6 @@ public class ChemistryBuilderParameters {
 	private double thresholdForOrderingCheckForHatchedBonds = HATCH_DETECTION_DEFAULT_THRESHOLD_FOR_ORDERING_CHECK;
 
 	private double yAxisShiftForCentre = DEFAULT_Y_AXIS_SHIFT_FOR_TEXT_CENTRE;
-	
-	private double maximumSingleBondLength = DEFAULT_MAXIMUM_SINGLE_BOND_LENGTH;
 
 	private double largeRadiusExpansion = DEFAULT_LARGE_TEXT_RADIUS_EXPANSION;
 	private double smallRadiusExpansion = DEFAULT_SMALL_TEXT_RADIUS_EXPANSION;
@@ -327,10 +321,6 @@ public class ChemistryBuilderParameters {
 		return allowedFontSizeVariation;
 	}
 
-	public double getTextOverlapEpsilon() {
-		return textOverlapEpsilon;
-	}
-
 	public int getMaximumOCRError() {
 		return maximumOCRError;
 	}
@@ -369,10 +359,6 @@ public class ChemistryBuilderParameters {
 
 	public double getyAxisShiftForCentre() {
 		return yAxisShiftForCentre;
-	}
-	
-	public double getMaximumRatioOfExtremeSingleBondLengths() {
-		return maximumSingleBondLength;
 	}
 
 	public double getLargeRadiusExpansion() {
