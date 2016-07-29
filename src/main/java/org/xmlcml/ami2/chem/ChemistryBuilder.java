@@ -633,10 +633,12 @@ public class ChemistryBuilder extends SimpleBuilder {
 				texts.add((JoinableText) joinableI);
 			}
 		}
-		if (joinables.get(joinables.size() - 1) instanceof JoinableText) {
-			texts.add((JoinableText) joinables.get(joinables.size() - 1));
+		if (joinables.size() > 0) {
+			if (joinables.get(joinables.size() - 1) instanceof JoinableText) {
+				texts.add((JoinableText) joinables.get(joinables.size() - 1));
+			}
+			attemptToJoinTexts(texts, joinables, joinPointsGroupedIntoJunctions);
 		}
-		attemptToJoinTexts(texts, joinables, joinPointsGroupedIntoJunctions);
 	}
 
 	private void attemptToJoinTexts(List<JoinableText> texts, List<Joinable> joinables, UnionFind<JoinPoint> joinPointsGroupedIntoJunctions) {
@@ -1017,7 +1019,7 @@ public class ChemistryBuilder extends SimpleBuilder {
 			int previousPreviousLabel = 0;
 			int previousLabel = 0;
 			for (Integer i : labelNumbersToBeSorted) {
-				if (i - previousLabel > labelNumbersToBeSorted.get(labelNumbersToBeSorted.size() - 1) * parameters.getMaximumLabelSequenceGap() || (i == previousPreviousLabel && i != 2 && i != 3 && i != 4)) {
+				if (i - previousLabel > labelNumbersToBeSorted.get(labelNumbersToBeSorted.size() - 1) * parameters.getMaximumLabelSequenceGap()) {
 					for (JoinableText t : list.getValue()) {
 						remainingJoinPoints.addAll(t.getJoinPoints());
 					}
