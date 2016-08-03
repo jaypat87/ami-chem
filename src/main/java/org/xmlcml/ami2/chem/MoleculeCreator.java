@@ -79,10 +79,6 @@ public class MoleculeCreator {
 
 	public class CMLPage extends CMLCml {
 
-		public List<CMLReaction> getReactions() {
-			return getDescendants("reaction");
-		}
-
 		private <T extends CMLElement> List<T> getDescendants(String name) {
 			List<Element> elements = XMLUtil.getQueryElements(this, ".//cml:molecule", CMLCml.CML_XPATH);
 			List<T> returnList = new ArrayList<T>();
@@ -90,6 +86,10 @@ public class MoleculeCreator {
 				returnList.add((T) e);
 			}
 			return returnList;
+		}
+
+		public List<CMLReaction> getReactions() {
+			return getDescendants("reaction");
 		}
 		
 		public List<CMLMolecule> getMolecules() {
@@ -539,7 +539,7 @@ public class MoleculeCreator {
 						continue;
 					}
 					boolean xConstraint = Math.abs(label1.getKey().getXRange().getMidPoint() - label2.getKey().getXRange().getMidPoint()) < parameters.getLabelJoiningMaximumXJitter() || Math.abs(label1.getKey().getXRange().getMin() - label2.getKey().getXRange().getMin()) < parameters.getLabelJoiningMaximumXJitter();
-					boolean vertical = xConstraint && ((label1.getKey().getYMin() - label2.getKey().getYMax() < parameters.getMaximumSpacingBetweenLabelLines() && label1.getKey().getYMin() - label2.getKey().getYMax() > 0) || (label2.getKey().getYMin() - label1.getKey().getYMax() < parameters.getMaximumSpacingBetweenLabelLines() && label2.getKey().getYMin() - label1.getKey().getYMax() > 0));
+					boolean vertical = xConstraint && ((label1.getKey().getYMin() - label2.getKey().getYMax() < parameters.getMaximumSpacingBetweenLabelLines() && label1.getKey().getYMin() - label2.getKey().getYMax() > -parameters.getMaximumOverlapBetweenLabelLines()) || (label2.getKey().getYMin() - label1.getKey().getYMax() < parameters.getMaximumSpacingBetweenLabelLines() && label2.getKey().getYMin() - label1.getKey().getYMax() > -parameters.getMaximumOverlapBetweenLabelLines()));
 					if (vertical) {
 						newLabels.union(label1, label2);
 					}

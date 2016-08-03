@@ -19,6 +19,7 @@ public class MoleculeCreatorParameters extends ChemistryBuilderParameters {
 	private static final double DEFAULT_LABEL_AND_MOLECULE_GAP = 20 / DEFAULT_STANDARD_MOLECULE_SIZE;//40 then 25
 	private static final double DEFAULT_LABEL_AND_ARROW_GAP = 15 / DEFAULT_STANDARD_MOLECULE_SIZE;//25 then 20
 	private static final double DEFAULT_TEXT_LINE_MAXIMUM_SPACING = 5 / DEFAULT_STANDARD_MOLECULE_SIZE;//2.3;
+	private static final double DEFAULT_TEXT_LINE_MAXIMUM_OVERLAP = 0.6 / DEFAULT_STANDARD_MOLECULE_SIZE;
 	private static final double DEFAULT_MAXIMUM_DISTANCE_FROM_LEFT_HAND_SIDE_FOR_NEW_REACTION_LINE = 35 / DEFAULT_STANDARD_MOLECULE_SIZE;
 	private static final double DEFAULT_MAXIMUM_REACTION_CAPTION_AND_ARROW_JITTER = 10 / DEFAULT_STANDARD_MOLECULE_SIZE;
 	private static final double DEFAULT_MAXIMUM_MOLECULE_CAPTION_AND_MOLECULE_JITTER = 30 / DEFAULT_STANDARD_MOLECULE_SIZE;
@@ -38,6 +39,7 @@ public class MoleculeCreatorParameters extends ChemistryBuilderParameters {
 	private double labelAndMoleculeGap = DEFAULT_LABEL_AND_MOLECULE_GAP;
 	private double labelAndArrowGap = DEFAULT_LABEL_AND_ARROW_GAP;
 	private double maximumSpacingBetweenLabelLines = DEFAULT_TEXT_LINE_MAXIMUM_SPACING;
+	private double maximumOverlapBetweenLabelLines = DEFAULT_TEXT_LINE_MAXIMUM_OVERLAP;
 	private double maximumDistanceFromEdgeForReactionLine = DEFAULT_MAXIMUM_DISTANCE_FROM_LEFT_HAND_SIDE_FOR_NEW_REACTION_LINE;
 	private double maximumReactionCaptionAndArrowJitter = DEFAULT_MAXIMUM_REACTION_CAPTION_AND_ARROW_JITTER;
 	private double maximumMoleculeCaptionAndMoleculeJitter = DEFAULT_MAXIMUM_MOLECULE_CAPTION_AND_MOLECULE_JITTER;
@@ -70,6 +72,10 @@ public class MoleculeCreatorParameters extends ChemistryBuilderParameters {
 	
 	public double getMaximumSpacingBetweenLabelLines() {
 		return maximumSpacingBetweenLabelLines * standardMoleculeSize;
+	}
+	
+	public double getMaximumOverlapBetweenLabelLines() {
+		return maximumOverlapBetweenLabelLines * standardMoleculeSize;
 	}
 	
 	public double getMaximumDistanceFromEdgeForReactionLine() {
