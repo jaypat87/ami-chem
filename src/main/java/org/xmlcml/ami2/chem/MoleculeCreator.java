@@ -1400,6 +1400,10 @@ public class MoleculeCreator {
 				bond = new CMLBond(atoms[0], atoms[1]);
 				String bondOrder = CMLBond.DOUBLE_D;
 				bond.setOrder(bondOrder);
+			} else if (joinable instanceof TripleBond) {
+				bond = new CMLBond(atoms[0], atoms[1]);
+				String bondOrder = CMLBond.TRIPLE_T;
+				bond.setOrder(bondOrder);
 			} else if (joinable instanceof WedgeBond) {
 				bond = new CMLBond(atoms[0], atoms[1]);
 				String bondOrder = CMLBond.SINGLE_S;

@@ -14,6 +14,7 @@ public class HigherPrimitives {
 
 	private List<SVGLine> lines;
 	private List<DoubleBond> doubleBonds;
+	private List<TripleBond> tripleBonds;
 	private List<Junction> junctions;
 	private List<Joinable> joinables;
 	private List<HatchedBond> hatchedBonds;
@@ -34,6 +35,10 @@ public class HigherPrimitives {
 
 	public List<DoubleBond> getDoubleBondList() {
 		return doubleBonds;
+	}
+
+	public List<TripleBond> getTripleBondList() {
+		return tripleBonds;
 	}
 
 	public List<HatchedBond> getHatchedBondList() {
@@ -69,6 +74,10 @@ public class HigherPrimitives {
 	
 	public void setDoubleBondList(List<DoubleBond> doubleBonds) {
 		this.doubleBonds = doubleBonds;
+	}
+	
+	public void setTripleBondList(List<TripleBond> tripleBonds) {
+		this.tripleBonds = tripleBonds;
 	}
 
 	public void setHatchedBondList(List<HatchedBond> hatchedBonds) {
