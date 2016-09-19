@@ -67,7 +67,6 @@ import com.google.common.collect.LinkedHashBasedTable;
 import com.google.common.collect.Sets;
 import com.google.common.collect.UnionFind;
 
-
 //import com.google.common.collect.Iterables; TODO is using Guava without adding it as a dependency a good idea?
 
 /** 
@@ -380,12 +379,22 @@ public class MoleculeCreator {
 		if (reactions == null) {
 			getReactionsAndMolecules();
 		}
+		for (CMLReaction reaction : reactions) {
+			if (reaction.getParent() != null) {
+				reaction.getParent().removeChild(reaction);
+			}
+		}
 		return reactions;
 	}
 	
 	public Collection<CMLMolecule> getMolecules() {
 		if (moleculeLocations == null) {
 			getReactionsAndMolecules();
+		}
+		for (CMLMolecule molecule : moleculeLocations.values()) {
+			if (molecule.getParent() != null) {
+				molecule.getParent().removeChild(molecule);
+			}
 		}
 		return moleculeLocations.values();
 	}
