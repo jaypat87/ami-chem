@@ -18,7 +18,7 @@ import org.xmlcml.cmine.args.ArgumentOption;
 import org.xmlcml.cmine.files.CTree;
 import org.xmlcml.cmine.files.CTreeFiles;
 import org.xmlcml.cmine.files.ResultElement;
-import org.xmlcml.cmine.files.ResultsElement;
+import org.xmlcml.cmine.files.ResultContainerElement;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.graphics.svg.SVGElement;
 import org.xmlcml.graphics.svg.SVGUtil;
@@ -75,7 +75,7 @@ public class GraphChemArgProcessor extends AMIArgProcessor {
 			}
 			ChemistryBuilder geometryBuilder = new ChemistryBuilder(inputSvg);
 			MoleculeCreator moleculeCreator = new MoleculeCreator(geometryBuilder);
-			ResultsElement resultsElement = new ResultsElement();
+			ResultContainerElement resultsElement = new ResultContainerElement();
 			for (CMLMolecule molecule : moleculeCreator.getMolecules()) {
 				ResultElement resultElement = new ResultElement();
 				resultElement.appendChild(molecule);
