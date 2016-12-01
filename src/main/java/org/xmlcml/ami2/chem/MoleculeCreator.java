@@ -67,7 +67,6 @@ import com.google.common.collect.LinkedHashBasedTable;
 import com.google.common.collect.Sets;
 import com.google.common.collect.UnionFind;
 
-
 //import com.google.common.collect.Iterables; TODO is using Guava without adding it as a dependency a good idea?
 
 /** 
@@ -79,10 +78,6 @@ public class MoleculeCreator {
 
 	public class CMLPage extends CMLCml {
 
-		public List<CMLReaction> getReactions() {
-			return getDescendants("reaction");
-		}
-
 		private <T extends CMLElement> List<T> getDescendants(String name) {
 			List<Element> elements = XMLUtil.getQueryElements(this, ".//cml:molecule", CMLCml.CML_XPATH);
 			List<T> returnList = new ArrayList<T>();
@@ -90,6 +85,10 @@ public class MoleculeCreator {
 				returnList.add((T) e);
 			}
 			return returnList;
+		}
+
+		public List<CMLReaction> getReactions() {
+			return getDescendants("reaction");
 		}
 		
 		public List<CMLMolecule> getMolecules() {
@@ -380,12 +379,22 @@ public class MoleculeCreator {
 		if (reactions == null) {
 			getReactionsAndMolecules();
 		}
+		for (CMLReaction reaction : reactions) {
+			if (reaction.getParent() != null) {
+				reaction.getParent().removeChild(reaction);
+			}
+		}
 		return reactions;
 	}
 	
 	public Collection<CMLMolecule> getMolecules() {
 		if (moleculeLocations == null) {
 			getReactionsAndMolecules();
+		}
+		for (CMLMolecule molecule : moleculeLocations.values()) {
+			if (molecule.getParent() != null) {
+				molecule.getParent().removeChild(molecule);
+			}
 		}
 		return moleculeLocations.values();
 	}
@@ -539,7 +548,7 @@ public class MoleculeCreator {
 						continue;
 					}
 					boolean xConstraint = Math.abs(label1.getKey().getXRange().getMidPoint() - label2.getKey().getXRange().getMidPoint()) < parameters.getLabelJoiningMaximumXJitter() || Math.abs(label1.getKey().getXRange().getMin() - label2.getKey().getXRange().getMin()) < parameters.getLabelJoiningMaximumXJitter();
-					boolean vertical = xConstraint && ((label1.getKey().getYMin() - label2.getKey().getYMax() < parameters.getMaximumSpacingBetweenLabelLines() && label1.getKey().getYMin() - label2.getKey().getYMax() > 0) || (label2.getKey().getYMin() - label1.getKey().getYMax() < parameters.getMaximumSpacingBetweenLabelLines() && label2.getKey().getYMin() - label1.getKey().getYMax() > 0));
+					boolean vertical = xConstraint && ((label1.getKey().getYMin() - label2.getKey().getYMax() < parameters.getMaximumSpacingBetweenLabelLines() && label1.getKey().getYMin() - label2.getKey().getYMax() > -parameters.getMaximumOverlapBetweenLabelLines()) || (label2.getKey().getYMin() - label1.getKey().getYMax() < parameters.getMaximumSpacingBetweenLabelLines() && label2.getKey().getYMin() - label1.getKey().getYMax() > -parameters.getMaximumOverlapBetweenLabelLines()));
 					if (vertical) {
 						newLabels.union(label1, label2);
 					}
@@ -1399,6 +1408,10 @@ public class MoleculeCreator {
 			if (joinable instanceof DoubleBond) {
 				bond = new CMLBond(atoms[0], atoms[1]);
 				String bondOrder = CMLBond.DOUBLE_D;
+				bond.setOrder(bondOrder);
+			} else if (joinable instanceof TripleBond) {
+				bond = new CMLBond(atoms[0], atoms[1]);
+				String bondOrder = CMLBond.TRIPLE_T;
 				bond.setOrder(bondOrder);
 			} else if (joinable instanceof WedgeBond) {
 				bond = new CMLBond(atoms[0], atoms[1]);

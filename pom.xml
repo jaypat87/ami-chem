@@ -3,10 +3,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.xml-cml</groupId>
-	<artifactId>ami-chemtext</artifactId>
+	<artifactId>ami-chem</artifactId>
 	<version>0.1-SNAPSHOT</version>
-	<description>Plugin architecture for converting  text to chemistry </description>
-	<name>AMI-chemtext</name>
+	<description>Plugin architecture for converting diagrams to chemistry</description>
+	<name>AMI-chem</name>
 	<!-- <parent> <groupId>uk.ac.cam.ch.wwmm</groupId> <artifactId>wwmm-parent</artifactId> 
 		<version>5-SNAPSHOT</version> </parent> -->
 	<!-- this should not be necessary -->
@@ -162,6 +162,37 @@
 			<artifactId>cmlxom</artifactId>
 			<version>3.2-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>org.xml-cml</groupId>
+			<artifactId>svg2xml</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.xml-cml</groupId>
+			<artifactId>diagramanalyzer</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.xml-cml</groupId>
+			<artifactId>cmine</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.xml-cml</groupId>
+			<artifactId>ami2</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.xml-cml</groupId>
+			<artifactId>jumbo</artifactId>
+			<version>6.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>uk.ac.cam.ch.ucc</groupId>
+			<artifactId>svggraphics2d</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>uk.ac.cam.ch.wwmm</groupId>
@@ -172,9 +203,42 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.xml-cml</groupId>
-			<artifactId>ami-chem</artifactId>
-			<version>0.1-SNAPSHOT</version>
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>cdk-io</artifactId>
+			<version>1.5.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>cdk-silent</artifactId>
+			<version>1.5.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>cdk-render</artifactId>
+			<version>1.5.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>cdk-renderawt</artifactId>
+			<version>1.5.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>cdk-sdg</artifactId>
+			<version>1.5.7</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>blogspot.software-and-algorithms</groupId>
+			<artifactId>stern-library</artifactId>
+			<version>0.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.vafer</groupId>
+			<artifactId>jdeb</artifactId>
+			<version>1.3</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- tests -->

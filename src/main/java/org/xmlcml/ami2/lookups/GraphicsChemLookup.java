@@ -6,6 +6,7 @@ import java.net.URL;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.xmlcml.cmine.lookup.AbstractLookup;
 import org.xmlcml.euclid.IntArray;
 
 import com.google.gson.JsonElement;

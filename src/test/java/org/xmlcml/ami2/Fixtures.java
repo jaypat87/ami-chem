@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.xmlcml.ami2.plugins.AMIPlugin;
 import org.xmlcml.cmine.args.DefaultArgProcessor;
-import org.xmlcml.cmine.files.CMDir;
+import org.xmlcml.cmine.files.CTree;
 import org.xmlcml.xml.XMLUtil;
 
 public class Fixtures {
@@ -65,7 +65,7 @@ public class Fixtures {
 			throws IOException {
 		LOG.trace("++++++++++++++++++++++   harness   +++++++++++++++++++++++");
 		LOG.trace("temp exists: "+temp+"; e: "+temp.exists()+"; d "+temp.isDirectory());
-		CMDir cmDir = new CMDir(cmDirectory);
+		CTree cmDir = new CTree(cmDirectory);
 		FileUtils.deleteDirectory(temp);
 		cmDir.copyTo(temp, true);
 		
